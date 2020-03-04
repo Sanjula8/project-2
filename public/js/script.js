@@ -13,7 +13,7 @@ $(function(){
         //If it all works, console log displays
         console.log("Search button works!" + newStock);
       });
-});
+  });
 
   $(".delete-stock").on("click", function(event) {
     var id = $(this).data("id");
