@@ -1,0 +1,35 @@
+<header>
+  <div class="container-fluid">
+    <div>
+      <a class="logout" href="/logout">
+        Logout
+      </a>
+    </div>
+  </div>
+</header>
+
+<form class="form-inline md-form mr-auto mb-4">
+  <input class="form-control mr-sm-2" type="text" placeholder="Enter Stock Name" aria-label="Search">
+  <button class="btn aqua-gradient btn-rounded btn-sm my-0" id="stock-search" type="submit">Search</button>
+</form>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Welcome <span class="member-name"></span></h2>
+      </div>
+    </div>
+  </div>
+
+  <section id="stockCards"><h2>STOCKCARDS</h2>
+    <ul>
+      {{#each stocks}}
+          {{> stock/stock-block}}
+      {{/each}}
+    </ul>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+
