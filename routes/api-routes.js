@@ -47,3 +47,17 @@ module.exports = function(app) {
     }
   });
 };
+
+// app.post("/stocks/create", function(req, res) {
+//   orm.insertOne(req.body.name, false, function(data) {
+//     console.log(data);
+//     res.redirect("/");
+//   });
+// });
+
+// app.delete("/stocks/:id", function(req, res) {
+//   orm.deleteOne(req.params.id, function(data) {
+//     console.log(data);
+//     res.sendStatus(200);
+//   });
+// });
