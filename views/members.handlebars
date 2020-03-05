@@ -8,10 +8,21 @@
   </div>
 </header>
 
+  <p class="handledinfo"></p>
 <form class="form-inline md-form mr-auto mb-4">
-  <input class="form-control mr-sm-2" type="text" placeholder="Enter Stock Name" aria-label="Search">
-  <button class="btn aqua-gradient btn-rounded btn-sm my-0" id="stock-search" type="submit">Search</button>
+
+    <select id = "stockSymbols">
+               <option value = "AMZN">AMZN</option>
+               <option value = "GOOGL">GOOGL</option>
+               <option value = "FB">FB</option>
+               <option value = "DIS">DIS</option>
+             </select>
+  <!-- {{!-- <input class="form-control mr-sm-2" type="text" placeholder="Enter Stock Name" aria-label="Search"> --}} -->
+  <button class="btn aqua-gradient btn-rounded btn-sm my-0 stock-search" type="submit">Search</button>
 </form>
+
+<form class="form-inline md-form mr-auto mb-4">
+
 
 
   <div class="container">
@@ -24,9 +35,9 @@
 
   <section id="stockCards"><h2>STOCKCARDS</h2>
     <ul>
-      {{#each stocks}}
+      {{!-- {{#each stocks}} --}}
           {{> stock/stock-block}}
-      {{/each}}
+      {{!-- {{/each}} --}}
     </ul>
   </section>
 

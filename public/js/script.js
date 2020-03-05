@@ -1,21 +1,38 @@
 $(function(){
-  $(".stock-search").on("submit", function(event) {
+// $("#selector option:selected");
+  $(".stock-search").on("click", function(event) {
     event.preventDefault();
-    
-    var newStock = {name: $(".stock-search").val().trim(),};
-   
-    $.ajax("/api/stocks/", {
+
+    const selected = $("#stockSymbols").val();
+
+
+    $.ajax({
+      url: "/api/stock/",
       type: "POST",
-      data: newStock,
-    }).then(
-      function() {
-        location.reload();
-        //If it all works, console log displays
-        console.log("Search button works!" + newStock);
-      });
+      data: {data: selected}
+    })
+      .then(
+        function(response) {
+          console.log("woot:", response);
+          $(".handledinfo").text(response.lastSplitFactor);
+        }
+      );
+    
+    
+    // var newStock = {name: $(".stock-search").val().trim(),};
+   
+    // $.ajax("/api/associateStock/", {
+    //   type: "POST",
+    //   data: newStock,
+    // }).then(
+    //   function() {
+    //     location.reload();
+    //     //If it all works, console log displays
+    //     console.log("Search button works!" + newStock);
+    //   });
   });
 
-  $(".delete-stock").on("click", function(event) {
+  $(".delete-stock").on("click", function() {
     var id = $(this).data("id");
 
     $.ajax("/api/stocks/" + id, {
