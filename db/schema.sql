@@ -2,13 +2,7 @@ CREATE DATABASE stocks_db;
 
 USE stocks_db;
 
-CREATE TABLE user
-(
-    id INT NOT NULL AUTO_INCREMENT,
-    userName VARCHAR(255) NOT NULL,
-    userPassword VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
-);
+
 CREATE TABLE stock
 (
     id INT NOT NULL,
