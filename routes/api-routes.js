@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+const axios = require("axios");
+require("dotenv").config();
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -19,9 +21,11 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(function() {
+        console.log(req.body.email);
         res.redirect(307, "/api/login");
       })
       .catch(function(err) {
+        console.log(err);
         res.status(401).json(err);
       });
   });
@@ -46,14 +50,53 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.get("/api/stock", function(req, res){
+    stocks(req, res);
+  });
+
+  app.post("/api/stock", function(req, res){
+    stocks(req.body.data, res)
+      .then(function(resolved) {
+        res.send(resolved.data.defaultKeyStatistics);
+        console.log(resolved.data.defaultKeyStatistics.lastSplitFactor);
+      });
+  });
+
+  app.post("/api/associateStock", function(req, res) {
+    orm.insertOne(req.body.symbol, false, function(data) {
+      console.log(data);
+      res.redirect("/");
+    });
+  });
+
 };
 
-// app.post("/stocks/create", function(req, res) {
-//   orm.insertOne(req.body.name, false, function(data) {
-//     console.log(data);
-//     res.redirect("/");
-//   });
-// });
+async function stocks(data){
+  const response = await axios({
+    "method":"GET",
+    "url":"https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary",
+    "headers":{
+      "content-type":"application/json",
+      "x-rapidapi-host":"apidojo-yahoo-finance-v1.p.rapidapi.com",
+      "x-rapidapi-key":process.env.API_KEY,
+    },"params":{
+      "region":"US",
+      "symbol": data
+    }
+  });
+  
+  return response;
+  // .then((response)=>{
+  // //   console.log(response.data.defaultKeyStatistics.lastSplitFactor);
+  //   res.render("members", response.data.defaultKeyStatistics);
+  // })
+  // .catch((error)=>{
+  //   console.log(error);
+  // });
+}
+
+
 
 // app.delete("/stocks/:id", function(req, res) {
 //   orm.deleteOne(req.params.id, function(data) {
