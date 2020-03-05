@@ -3,7 +3,7 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-require("dotenv").config();
+// require("dotenv").config();
 
 console.log(process.env.API_KEY);
 // Setting up port and requiring models for syncing
@@ -19,6 +19,13 @@ app.use(express.static("public"));
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "index.handlebars" }));
+app.set("view engine", "handlebars");
+
 app.use(passport.initialize());
 app.use(passport.session());
 
