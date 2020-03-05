@@ -58,8 +58,8 @@ module.exports = function(app) {
   app.post("/api/stock", function(req, res){
     stocks(req.body.data, res)
       .then(function(resolved) {
-        res.send(resolved.data.defaultKeyStatistics);
-        console.log(resolved.data.defaultKeyStatistics.lastSplitFactor);
+        res.send(resolved.data);
+        // console.log(resolved.data.price.longName);
       });
   });
 

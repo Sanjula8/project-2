@@ -13,8 +13,10 @@ $(function(){
     })
       .then(
         function(response) {
-          console.log("woot:", response);
-          $(".handledinfo").text(response.lastSplitFactor);
+          console.log("woot:", response.price.longName);
+          $("#thing").text("Name: " + response.price.longName);
+        //   console.log("woot:", response.defaultKeyStatistics.lastSplitFactor);
+        //   $("#thing").text(response.defaultKeyStatistics.lastSplitFactor);
         }
       );
     
