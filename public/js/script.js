@@ -26,7 +26,8 @@ $(function(){
               <p class="card-stockPrice">${response.price.regularMarketChangePercent.fmt}</p>
               <p class="card-stockChangePercentage">${response.financialData.currentPrice.fmt}</p>
           
-              <button href="#" class="btn btn-primary delete-stock" id="delete-${response.symbol}">Delete</button>
+              <button href="#" class="btn btn-primary delete-stock" data-id="${response.symbol}">Delete</button>
+              <button href="#" class="btn btn-primary save-stock" data-id="${response.symbol}">Save</button>
             </div>
           </div>
           
