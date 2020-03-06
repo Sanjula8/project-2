@@ -15,16 +15,28 @@ $(function(){
     })
       .then(
         function(response) {
-          $($( ".cardList" ).clone().toArray().pop()).appendTo( $( "#stockcardDeck" ) ).attr("id", response.price.longName);
+
+          var $card = $(`<li class="cardList">
+
+
+          <div class="stock-card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-Name"> ${response.price.longName}</h5>
+              <p class="card-symbol">${response.symbol}</p>
+              <p class="card-stockPrice">${response.price.regularMarketChangePercent.fmt}</p>
+              <p class="card-stockChangePercentage">${response.financialData.currentPrice.fmt}</p>
           
-          // console.log($( ".cardList" ).attr("id", response.price.longName));
+              <button href="#" class="btn btn-primary delete-stock" data-id="${response.symbol}">Delete</button>
+              <button href="#" class="btn btn-primary save-stock" data-id="${response.symbol}">Save</button>
+            </div>
+          </div>
+          
+          
+          </li>`);
 
-          console.log("woot:", response.price.longName);
+          $($card).appendTo("ul");
 
-          $("#longName").text(response.price.longName);
-          $("#symbol").text(response.symbol);
-          $("#percentChange").text(response.price.regularMarketChangePercent.fmt);
-          $("#cost").text("$"+ response.financialData.currentPrice.fmt);
+
 
         //   console.log("woot:", response.defaultKeyStatistics.lastSplitFactor);
         //   $("#thing").text(response.defaultKeyStatistics.lastSplitFactor);
