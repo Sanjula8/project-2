@@ -5,9 +5,6 @@ $(function(){
 
     const selected = $("#stockSymbols").val();
 
-
-    // $($( ".cardList" ).attr('id', response.price.longName).clone().toArray().pop()).appendTo( $( "#stockcardDeck" ) );
-
     $.ajax({
       url: "/api/stock/",
       type: "POST",
@@ -16,64 +13,49 @@ $(function(){
       .then(
         function(response) {
 
-          var $card = $(`<li class="cardList">
+          var $card = $(`<div class="cardList">
 
 
           <div class="stock-card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-Name"> ${response.price.longName}</h5>
-              <p class="card-symbol">${response.symbol}</p>
-              <p class="card-stockPrice">${response.price.regularMarketChangePercent.fmt}</p>
-              <p class="card-stockChangePercentage">${response.financialData.currentPrice.fmt}</p>
+              <h5 class="card-Name"> Company Name: ${response.price.longName}</h5>
+              <p class="card-symbol">Stock Symbol: ${response.symbol}</p>
+              <p class="card-stockPrice">Stock Change: ${response.price.regularMarketChangePercent.fmt}</p>
+              <p class="card-stockChangePercentage">Stock Price: $${response.financialData.currentPrice.fmt}</p>
           
-              <button href="#" class="btn btn-primary delete-stock" data-id="${response.symbol}">Delete</button>
-              <button href="#" class="btn btn-primary save-stock" data-id="${response.symbol}">Save</button>
+              <button class="btn btn-primary delete-stock" data-id="${response.symbol}">Delete</button>
+              <button class="btn btn-primary save-stock" data-id="${response.symbol}">Save</button>
             </div>
           </div>
           
           
-          </li>`);
+          </div>`);
 
-          $($card).appendTo("ul");
-
-
-
-        //   console.log("woot:", response.defaultKeyStatistics.lastSplitFactor);
-        //   $("#thing").text(response.defaultKeyStatistics.lastSplitFactor);
+          $($card).appendTo("section");
         } 
       );
     
-    // var newStock = {name: $(".stock-search").val().trim(),};
-   
-    // $.ajax("/api/associateStock/", {
-    //   type: "POST",
-    //   data: newStock,
-    // }).then(
-    //   function() {
-    //     location.reload();
-    //     //If it all works, console log displays
-    //     console.log("Search button works!" + newStock);
-    //   });
   });
 
   $(".delete-stock").on("click", function() {
-    var id = $(this).data("id");
-
+    var id = $(this).data(response.symbol);
+    console.log(id);
     $.ajax("/api/stocks/" + id, {
       type: "DELETE",
     }).then(
       function() {
-        console.log(id + "deleted");
-        location.reload();
+        // location.reload();
+        console.log(id);
       }
     );
   });
   
-  $(document).ready(function() {
-    $.get("/api/user_data").then(function(data) {
-      $(".member-name").text(data.email);
-    });
-  });  
 });
+
+$(document).ready(function() {
+  $.get("/api/user_data").then(function(data) {
+    $(".member-name").text(data.email);
+  });
+});  
 
 
