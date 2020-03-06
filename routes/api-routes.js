@@ -79,7 +79,7 @@ async function stocks(data){
     "headers":{
       "content-type":"application/json",
       "x-rapidapi-host":"apidojo-yahoo-finance-v1.p.rapidapi.com",
-      "x-rapidapi-key":process.env.API_KEY,
+      "x-rapidapi-key": process.env.API_KEY,
     },"params":{
       "region":"US",
       "symbol": data

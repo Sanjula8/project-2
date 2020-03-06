@@ -1,0 +1,19 @@
+nav{
+  background-color: gainsboro;
+  align-content: space-around;
+}
+
+.logout{
+
+  background-color: red;
+  color: white;
+  
+}
+
+body{
+  background-color: deepskyblue;
+}
+
+.stock-card{
+  background-color: whitesmoke;
+}
