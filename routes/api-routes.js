@@ -3,6 +3,7 @@ var db = require("../models");
 var passport = require("../config/passport");
 const axios = require("axios");
 require("dotenv").config();
+var orm = require("../config/orm");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -69,6 +70,15 @@ module.exports = function(app) {
       res.redirect("/");
     });
   });
+
+  app.post("/stock/create", function(req, res) {
+    orm.insertOne({...req.body, userId:req.user.id}, function(data){
+      console.log(data);
+      res.sendStatus(200);
+    });
+  });
+
+
 
 };
 

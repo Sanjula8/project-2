@@ -24,6 +24,6 @@
 		"semi": ["error", "always"]
     },
     
-    "parserOptions": { "ecmaVersion": 2017 }
+    "parserOptions": { "ecmaVersion": 6 }
     
 }
