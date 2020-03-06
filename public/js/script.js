@@ -14,7 +14,10 @@ $(function(){
       .then(
         function(response) {
           console.log("woot:", response.price.longName);
-          $("#thing").text("Name: " + response.price.longName);
+          $("#longName").text(response.price.longName);
+          $("#symbol").text(response.symbol);
+          $("#percentChange").text(response.price.regularMarketChangePercent.fmt);
+          $("#cost").text("$"+ response.financialData.currentPrice.fmt);
         //   console.log("woot:", response.defaultKeyStatistics.lastSplitFactor);
         //   $("#thing").text(response.defaultKeyStatistics.lastSplitFactor);
         }
