@@ -6,6 +6,8 @@ $(function(){
     const selected = $("#stockSymbols").val();
 
 
+    // $($( ".cardList" ).attr('id', response.price.longName).clone().toArray().pop()).appendTo( $( "#stockcardDeck" ) );
+
     $.ajax({
       url: "/api/stock/",
       type: "POST",
@@ -13,16 +15,21 @@ $(function(){
     })
       .then(
         function(response) {
+          $($( ".cardList" ).clone().toArray().pop()).appendTo( $( "#stockcardDeck" ) ).attr("id", response.price.longName);
+          
+          // console.log($( ".cardList" ).attr("id", response.price.longName));
+
           console.log("woot:", response.price.longName);
+
           $("#longName").text(response.price.longName);
           $("#symbol").text(response.symbol);
           $("#percentChange").text(response.price.regularMarketChangePercent.fmt);
           $("#cost").text("$"+ response.financialData.currentPrice.fmt);
+
         //   console.log("woot:", response.defaultKeyStatistics.lastSplitFactor);
         //   $("#thing").text(response.defaultKeyStatistics.lastSplitFactor);
-        }
+        } 
       );
-    
     
     // var newStock = {name: $(".stock-search").val().trim(),};
    
@@ -44,12 +51,17 @@ $(function(){
       type: "DELETE",
     }).then(
       function() {
-        //If it all works, console log displays
-        console.log("Delete button works!");
         console.log(id + "deleted");
         location.reload();
       }
     );
   });
-
+  
+  $(document).ready(function() {
+    $.get("/api/user_data").then(function(data) {
+      $(".member-name").text(data.email);
+    });
+  });  
 });
+
+
