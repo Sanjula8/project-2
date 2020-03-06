@@ -14,41 +14,31 @@
   </div>
 </div>
 
-  <form class="form-inline md-form mr-auto mb-4">
-<div class="container">
-<div class="row">
-<div class="col">
- <select id = "stockSymbols">
-               <option value = "AMZN">AMZN</option>
-               <option value = "GOOGL">GOOGL</option>
-               <option value = "FB">FB</option>
-               <option value = "DIS">DIS</option>
-             </select>
+<form class="form-inline md-form mr-auto mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <select id = "stockSymbols">
+          <option value = "AMZN">AMZN</option>
+          <option value = "GOOGL">GOOGL</option>
+          <option value = "FB">FB</option>
+          <option value = "DIS">DIS</option>
+        </select>
   <!-- {{!-- <input class="form-control mr-sm-2" type="text" placeholder="Enter Stock Name" aria-label="Search"> --}} -->
-  <button type="button" class="btn btn-secondary stock-search">Search</button>
+        <button type="button" class="btn btn-secondary stock-search">Search</button>
+  {{!-- <button class="btn aqua-gradient btn-rounded btn-sm my-0 stock-search" type="submit">Search</button> --}}
+      </div>
+    </div>
+  </div>
+</form>
 
   
-  {{!-- <button class="btn aqua-gradient btn-rounded btn-sm my-0 stock-search" type="submit">Search</button> --}}
-</form>
-</div>
+  
+<div class="container">
+<h2>My Stocks</h2>
+<section id="stockCards" class= "container-fluid row justify-content-start">
 
-</div>
+{{!-- STOCKS GO HERE --}}
 
-
-</div>
-   <div class="container">
-<div class="row">
-<div class="col">
-
-  <section id="stockCards"><h2>My Stocks</h2>
-   <ul>
-
-          {{> stock/stock-block}}
-     
-    </ul>
-  </section>
-
-
-</div>
-</div>
+</section>
 </div>
