@@ -1,0 +1,26 @@
+.jumbotron {
+    background-color: rgba(40, 93, 150, 0.5);
+    text-align: center;
+
+}
+
+body {
+    background-image: url("https://askjackie.ca/wp-content/uploads/2018/02/jackie-porter-360-degree-process-csg.jpg");
+    color: white;
+    font-family: 'Bree Serif', serif;
+
+}
+
+.logout {
+    color: white;
+    text-decoration: none;
+}
+
+.logout:hover {
+    color: rgb(235, 129, 0);
+    text-decoration: none;
+}
+
+.card {
+    background: transparent;
+}
