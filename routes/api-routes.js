@@ -52,6 +52,25 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/memberstock", function(req, res) {
+
+    db.Stock.findAll({
+      where: {
+        UserID : req.user.id
+      }
+    }).then(function(data) {
+        // console.log("memberstock")
+        var stockArray = []
+        for (let index = 0; index < data.length; index++) {
+            const stock = data[index];
+            stockArray.push(stock.stockSymbol)  
+        }
+        console.log(stockArray)
+        res.send(stockArray)
+    });
+    
+  });
+
   app.get("/api/stock", function(req, res){
     stocks(req, res);
   });
@@ -78,6 +97,14 @@ module.exports = function(app) {
     });
   });
 
+  app.delete("/stock/delete/:datasymbol", function(req, res) {
+      console.log(req.params.datasymbol)
+      console.log(req.user.id)
+  orm.deleteOne(req.user.id, req.params.datasymbol, function(data) {
+    console.log(data);
+    res.sendStatus(200);
+  });
+});
 
 
 };
@@ -97,20 +124,8 @@ async function stocks(data){
   });
   
   return response;
-  // .then((response)=>{
-  // //   console.log(response.data.defaultKeyStatistics.lastSplitFactor);
-  //   res.render("members", response.data.defaultKeyStatistics);
-  // })
-  // .catch((error)=>{
-  //   console.log(error);
-  // });
 }
 
 
 
-// app.delete("/stocks/:id", function(req, res) {
-//   orm.deleteOne(req.params.id, function(data) {
-//     console.log(data);
-//     res.sendStatus(200);
-//   });
-// });
+
