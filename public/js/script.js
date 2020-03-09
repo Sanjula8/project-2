@@ -26,7 +26,7 @@ $(function(){
     $.ajax("/stock/delete/" + id, {
       type: "DELETE"
     }).then(function(data) {
-      // location.reload();
+      location.reload();
       console.log(data);
     }
 
@@ -48,7 +48,7 @@ $(function(){
       console.log(data);
       console.log("test");
     });
-
+    
   });
 
 
@@ -85,13 +85,13 @@ $(function(){
   
             <div class="stock-card" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-Name"> Company Name: ${response.price.longName}</h5>
+                <h5 class="card-Name">${response.price.longName}</h5>
                 <p class="card-symbol">Stock Symbol: ${response.symbol}</p>
                 <p class="card-stockPrice">Stock Change: ${response.price.regularMarketChangePercent.fmt}</p>
                 <p class="card-stockChangePercentage">Stock Price: $${response.financialData.currentPrice.fmt}</p>
             
-                <button href="#" class="btn btn-primary delete-stock" data-name="${response.price.longName}" data-symbol="${response.symbol}">Delete</button>
-                <button href="#" class="btn btn-primary save-stock" data-name="${response.price.longName}" data-symbol="${response.symbol}">Save</button>
+                <button href="#" class="btn btn-secondary delete-stock" data-name="${response.price.longName}" data-symbol="${response.symbol}">Delete</button>
+                <button href="#" class="btn btn-secondary save-stock" data-name="${response.price.longName}" data-symbol="${response.symbol}">Save</button>
               </div>
             </div>
             
@@ -101,5 +101,4 @@ $(function(){
           $($card).appendTo("section");
         }); 
   }
-
 }); 

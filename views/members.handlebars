@@ -1,46 +1,41 @@
-<header>
-  <div class="container-fluid">
-    <div>
-      <a class="logout" href="/logout">
-        Logout
-      </a>
-    </div>
-  </div>
-</header>
-
-
 <div class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container-fluid">
     <h1 class="display-4">Welcome  <span class="member-name"></span></h1>
   </div>
 </div>
 
-<form class="form-inline md-form mr-auto mb-4">
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <select id = "stockSymbols">
-          <option value = "AMZN">AMZN</option>
-          <option value = "GOOGL">GOOGL</option>
-          <option value = "FB">FB</option>
-          <option value = "DIS">DIS</option>
-        </select>
-  <!-- {{!-- <input class="form-control mr-sm-2" type="text" placeholder="Enter Stock Name" aria-label="Search"> --}} -->
-        <button type="button" class="btn btn-secondary stock-search">Search</button>
-  {{!-- <button class="btn aqua-gradient btn-rounded btn-sm my-0 stock-search" type="submit">Search</button> --}}
+      <div class="row justify-content-around">
+        <form class="col-md-10 form-inline md-form mr-auto mb-4">
+          <div class="stock-search-bar">
+            <select class=" form-control form-control"id = "stockSymbols">
+              <option value = "AMZN">AMZN</option>
+              <option value = "GOOGL">GOOGL</option>
+              <option value = "FB">FB</option>
+              <option value = "DIS">DIS</option>
+            </select>
+            <button type="button" class="btn btn-secondary stock-search">Search</button>
+          </div>
+        </form>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-secondary logoutbtn">
+      <a class="logout" href="/logout">
+        Logout
+      </a>
+        </button>
       </div>
-    </div>
   </div>
-</form>
 
 {{!--   
   {{#each response}}
 <p>{{dataValues.stockName}}</p>
 {{/each}} --}}
 
+
 <div class="container">
 <h2>My Stocks</h2>
-<section id="stockCards" class= "container-fluid row justify-content-start">
+<section id="stockCards" class= "row justify-content-start">
+
 
 
 {{!-- STOCKS GO HERE --}}

@@ -1,13 +1,29 @@
 .jumbotron {
-    background-color: rgba(40, 93, 150, 0.5);
+    background-color: #285d96;
     text-align: center;
+    width: 100%;
+    box-shadow: 1px 1px 2px black;
 
 }
 
 body {
-    background-image: url("https://askjackie.ca/wp-content/uploads/2018/02/jackie-porter-360-degree-process-csg.jpg");
     color: white;
     font-family: 'Bree Serif', serif;
+    background-color: #1E446E;
+
+
+}
+
+h5{
+    font-weight: bolder;
+}
+
+p{
+    font-weight: lighter;
+}
+
+button{
+    box-shadow: 1px 1px 2px black;
 
 }
 
@@ -16,11 +32,48 @@ body {
     text-decoration: none;
 }
 
+
 .logout:hover {
-    color: rgb(235, 129, 0);
     text-decoration: none;
+    color: white;
+    
 }
 
-.card {
-    background: transparent;
+.delete-stock:hover{
+
+    background-color: maroon;
+    text-decoration: none;
+
 }
+
+.logoutbtn:hover {
+    background-color: maroon;
+    text-decoration: none;
+    border-color: white;
+
+}
+
+.stock-card {
+    background-color:  rgba(40, 93, 150);;
+    color: white;
+    margin: 20px;
+    border-radius: 5px;
+    /* background: transparent; */
+    box-shadow: 1px 1px 2px black;
+
+}
+
+.save-stock{
+    margin-left: 110px;
+}
+
+.save-stock:hover{
+    background-color:  rgba(40, 93, 150);;
+    border-color: white;
+}
+
+@media (min-width: 0px) and (max-width: 767.98px) { 
+    .member-name{
+        display: none;
+    }
+ }
